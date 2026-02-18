@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>#3 template basics</title>
+</head>
+<body>
+<h1>template basics</h1>
+{% comment %} if - else {% endcomment %}
+{% if blogs.0.is_featured %}
+<h2>Featured Blog: {{ blogs.0.title }}</h2>
+{% else %}
+<p>No featured blogs available.</p>
+{% endif %}
+
+
+{% comment %} For loop {% endcomment %}
+{% for blog in blogs %}
+    <p>{{ blog.title }}</p>
+{% endfor %}
+
+{% comment %} with  {% endcomment %}
+{% with  total_blogs=blogs|length %}
+<p>Total blogs: {{ total_blogs }}</p>
+{% endwith %}
+ 
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+    </tr>
+    {% for blog in blogs %}
+    <tr style="background-color: {% cycle 'lightgray' 'white' %};">
+        <td>{{ blog.title }}</td>
+        <td>{{ blog.author }}</td>
+    </tr>
+    {% endfor %}
+
+    {% comment %} Cycle {% endcomment %}
+<h2>Blogs in table</h2>
+<table border="1" cellpadding="5" cellspacing="0">
+   {% for blog in blogs %}
+   <tr style="background-color: {% cycle 'lightgray' 'white' %};">
+       <td>{{ blog.title }}</td>
+       <td>{{ blog.author }}</td>
+   </tr>
+   {% endfor %}
+</table>
+
+{% comment %} firstof {% endcomment %}
+<p>Author: {% firstof  blogs.1.author "AC"%}</p>
+
+{% comment %} Varbatim {% endcomment %}
+{% verbatim %}
+<p>This is a verbatim block. {{ variable }} will not be rendered.</p>
+{% endverbatim %}
+
+{% comment %} autorscape {% endcomment %}
+<h2>Autoescape Example</h2>
+<p>Without autoescape: {{ html_code }}</p>
+<p>With autoescape: {{ html_code|safe }}</p>
+</body>
+</html>

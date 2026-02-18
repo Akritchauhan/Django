@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>#2 template basics</title>
+</head>
+<body>
+<h1>Blog filter</h1>
+<p><b>Author:</b>{{ post.author | yesno:"yes,no,maybe" }}</p>
+
+{% comment %} test filter {% endcomment %}
+<p><b>Title:</b>{{ post.title }}</p>
+<p><b>Title:</b>{{ post.title|upper }}</p>
+</body><p><b>Title:</b>{{ post.title| lower }}</p>
+<p><b>Title:</b>{{ post.title | capfirst }}</p>
+<p><b>Title:</b>{{ post.title | title}}</p>
+<p><b>Title:</b>{{ post.title | truncatechars:5 }}</p>
+<p><b>Title:</b>{{ post.title | truncatewords:1}}</p>
+<p><b>Title:</b>{{ post.title |linebreaks}}</p>
+
+<hr>
+
+{% comment %} Number filter {% endcomment %}
+
+<p><b>Price:</b>{{ post.price }}</p>
+<p><b>Price+:</b>{{ post.price | add:2 }}</p>  
+{% if post.number|divisibleby:2 %}
+<p><b>Number is divisible by 2</b></p>
+{% else %}
+<p><b>Number is not divisible by 2</b></p> 
+{% endif %}
+
+{% comment %} List Filter {% endcomment %}
+<p><b>Tags:</b>{{ post.tags }}</p>
+<p><b>Tags:</b>{{ post.tags | first }}</p>
+<p><b>Tags:</b>{{ post.tags | length }}</p>
+<p><b>Tags:</b>{{ post.tags | slice:'2' }}</p>
+<p><b>Tags:</b>{{ post.tags | join:', ' }}</p>
+</body>
+</html>

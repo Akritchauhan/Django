@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{%blog title%} Blog Page {%endblog%}
+
+{%block content%}
+<h1>Blog</h1>
+<p>Welcome to the blog page! Here you can find the latest news and updates.</p>
+
+{% {% regroup students by class as grouped_students %}%}
+<ul>
+    {% for group in grouped_students %}
+        <li>class {{ group.grouper }}</li>
+        <ul>
+            {% for student in group.list %}
+                <li>{{ student.name }} - {{ student.age }} years old</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+
+    <p>
+        process :{% widthratio 50 100 100 %}
+    </p>
+
+    {% spaceless %}
+    <div>
+        <span> This is a </span>
+        <span> test of spaceless. </span>
+    </div>
+    {% endspaceless %}
+
+    {% filter upper %}
+        <p>This text will be HTML-escaped.</p>
+    {% endfilter %}
+{%endblock%}

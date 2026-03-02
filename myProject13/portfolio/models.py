@@ -1,3 +1,10 @@
 from django.db import models
+class Student(models.Model):
+     name = models.CharField(max_length=100)
+     age = models.IntegerField()
+     email = models.EmailField()
+     enrollment_date = models.DateField(auto_now_add=True)
+     city = models.CharField(max_length=100, default='Unknown')
 
-# Create your models here.
+def __str__(self):
+    return self.name

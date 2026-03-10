@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <h2>Dashboard</h2>
+    <p>Welcome to your dashboard, {{ request.user.username }}!</p>
+    <p>Email: {{ request.user.email }}</p>
+{% endblock %}
